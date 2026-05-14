@@ -1,0 +1,103 @@
+﻿<Window x:Class="SistemaCotizacionesWPF.CatalogoPrecios"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Catálogo de Precios Unitarios"
+        Height="500"
+        Width="700">
+
+    <Grid Margin="10">
+
+        <StackPanel>
+
+            <TextBlock Text="Catálogo de Precios Unitarios"
+                       FontSize="20"
+                       Margin="0,0,0,10"/>
+
+            <!-- PRODUCTO -->
+            <StackPanel Orientation="Horizontal" Margin="0,5">
+                <TextBlock Text="Producto:" Width="80"/>
+                <ComboBox x:Name="comboProducto"
+                          Width="150"/>
+            </StackPanel>
+
+            <!-- PROVEEDOR -->
+            <StackPanel Orientation="Horizontal" Margin="0,5">
+                <TextBlock Text="Proveedor:" Width="80"/>
+                <ComboBox x:Name="comboProveedor"
+                          Width="150"/>
+            </StackPanel>
+
+            <!-- PRECIO -->
+            <StackPanel Orientation="Horizontal" Margin="0,5">
+                <TextBlock Text="Precio:" Width="80"/>
+                <TextBox x:Name="txtPrecio"
+                         Width="100"/>
+            </StackPanel>
+
+            <!-- UNIDAD -->
+            <StackPanel Orientation="Horizontal" Margin="0,5">
+                <TextBlock Text="Unidad:" Width="80"/>
+                <TextBox x:Name="txtUnidad"
+                         Width="100"/>
+            </StackPanel>
+
+            <!-- BOTÓN GUARDAR -->
+            <Button Content="Guardar Precio"
+                    Width="140"
+                    Height="30"
+                    Margin="0,10"
+                    Click="BtnGuardar_Click"/>
+
+            <!-- TABLA -->
+            <DataGrid x:Name="gridPrecios"
+                      Height="220"
+                      Margin="0,10,0,10"
+                      AutoGenerateColumns="False"
+                      SelectionMode="Single">
+
+                <DataGrid.Columns>
+
+                    <DataGridTextColumn Header="Producto"
+                                        Binding="{Binding Producto}"
+                                        Width="*"/>
+
+                    <DataGridTextColumn Header="Proveedor"
+                                        Binding="{Binding Proveedor}"
+                                        Width="*"/>
+
+                    <DataGridTextColumn Header="Precio"
+                                        Binding="{Binding Precio}"
+                                        Width="*"/>
+
+                    <DataGridTextColumn Header="Unidad"
+                                        Binding="{Binding Unidad}"
+                                        Width="*"/>
+
+                </DataGrid.Columns>
+
+            </DataGrid>
+
+            <!-- BOTONES -->
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        Margin="0,10">
+
+                <Button x:Name="btnAgregarCotizacion"
+                        Content="Agregar a Cotización"
+                        Width="180"
+                        Height="35"
+                        Margin="0,0,10,0"
+                        Click="BtnAgregarCotizacion_Click"/>
+
+                <Button x:Name="btnRegresar"
+                        Content="Regresar"
+                        Width="150"
+                        Height="35"
+                        Click="BtnRegresar_Click"/>
+
+            </StackPanel>
+
+        </StackPanel>
+
+    </Grid>
+</Window>
