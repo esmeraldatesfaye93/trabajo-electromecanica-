@@ -428,10 +428,15 @@ namespace SistemaCotizacionesWPF
 
         private void TxtFactor_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (lblResTotal != null)
-                CalcularAPU();
-        }
+            // Verifica que TODOS los labels existan antes de calcular
+            if (lblResTotal == null ||
+                lblResIva == null ||
+                lblTotalConIva == null ||
+                lblCostoDirecto == null)
+                return;
 
+            CalcularAPU();
+        }
         private void CalcularAPU()
         {
             foreach (var f in filasManoObra)
@@ -476,7 +481,7 @@ namespace SistemaCotizacionesWPF
             lblSubtotal2.Text = $"${sub2:0.00}";
             lblUtilidad.Text = $"${cu:0.00}";
             lblResTotal.Text = $"${pu:0.00}";
-            lblResIva.Text = $"${ivaM:0.00}";
+            lblResIva.Text = $"${iva:0.00}";
             lblTotalConIva.Text = $"${total:0.00}";
 
             lblApuPrecioUnitario.Text = $"${pu:0.00}";
