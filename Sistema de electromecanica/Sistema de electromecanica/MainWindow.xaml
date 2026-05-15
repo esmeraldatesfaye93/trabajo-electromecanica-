@@ -5,102 +5,165 @@
         WindowStartupLocation="CenterScreen" ResizeMode="CanResize">
     <Grid Background="#F5F5F5">
         <TabControl>
+
             <!-- ═══════════════════════════════════════════════════ -->
             <!-- TAB 1: COTIZACIÓN                                   -->
             <!-- ═══════════════════════════════════════════════════ -->
             <TabItem Header="Cotización" Padding="10">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel Margin="10">
 
-                    <!-- Panel de entrada -->
-                    <Border Grid.Row="0" Margin="10" Background="White" Padding="15">
-                        <StackPanel>
-                            <TextBlock Text="Agregar Artículo" FontSize="14" FontWeight="Bold" Margin="0,0,0,10"/>
+                        <TextBlock Text="Sistema de Cotizaciones"
+                                   FontSize="22" FontWeight="Bold"
+                                   HorizontalAlignment="Center" Margin="0,0,0,10"/>
 
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
+                        <!-- DATOS DEL CLIENTE -->
+                        <Border Background="White" Padding="15" Margin="0,0,0,10">
+                            <StackPanel>
+                                <TextBlock Text="Datos del Cliente"
+                                           FontSize="14" FontWeight="Bold" Margin="0,0,0,10"/>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
 
-                            <StackPanel Grid.Column="0" Margin="5">
-                                <TextBlock Text="Producto" FontWeight="Bold" Margin="0,0,0,5"/>
-                                <ComboBox x:Name="comboProducto" Height="30" Padding="8"/>
-                            </StackPanel>
-
-                            <StackPanel Grid.Column="1" Margin="5">
-                                <TextBlock Text="Proveedor" FontWeight="Bold" Margin="0,0,0,5"/>
-                                <ComboBox x:Name="comboProveedor" Height="30" Padding="8"/>
-                            </StackPanel>
-
-                            <StackPanel Grid.Column="2" Margin="5">
-                                <TextBlock Text="Cantidad" FontWeight="Bold" Margin="0,0,0,5"/>
-                                <TextBox x:Name="txtCantidad" Height="30" Padding="8" Text="1"/>
-                            </StackPanel>
-
-                            <StackPanel Grid.Column="3" Margin="5">
-                                <TextBlock Text="Precio Unitario" FontWeight="Bold" Margin="0,0,0,5"/>
-                                <TextBox x:Name="txtPrecio" Height="30" Padding="8" IsReadOnly="True" Background="#EEEEEE"/>
-                            </StackPanel>
-
-                            <Button Grid.Column="4" x:Name="BtnAgregar" Click="BtnAgregar_Click" 
-                                    Content="Agregar" Width="100" Height="30" Margin="5,18,5,0" 
-                                    Background="#4CAF50" Foreground="White" FontWeight="Bold"/>
-
-                            <Button Grid.Column="5" x:Name="BtnAbrirCatalogo" Click="BtnAbrirCatalogo_Click" 
-                                    Content="Catálogo" Width="100" Height="30" Margin="5,18,5,0" 
-                                    Background="#2196F3" Foreground="White" FontWeight="Bold"/>
+                                    <StackPanel Grid.Column="0" Margin="5">
+                                        <TextBlock Text="Nombre:" FontWeight="Bold" Margin="0,0,0,4"/>
+                                        <TextBox x:Name="txtClienteNombre" Height="28" Padding="5"/>
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="1" Margin="5">
+                                        <TextBlock Text="Empresa:" FontWeight="Bold" Margin="0,0,0,4"/>
+                                        <TextBox x:Name="txtClienteEmpresa" Height="28" Padding="5"/>
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="2" Margin="5">
+                                        <TextBlock Text="Teléfono:" FontWeight="Bold" Margin="0,0,0,4"/>
+                                        <TextBox x:Name="txtClienteTelefono" Height="28" Padding="5"/>
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="3" Margin="5">
+                                        <TextBlock Text="Correo:" FontWeight="Bold" Margin="0,0,0,4"/>
+                                        <TextBox x:Name="txtClienteCorreo" Height="28" Padding="5"/>
+                                    </StackPanel>
                                 </Grid>
                             </StackPanel>
                         </Border>
 
-                    <!-- DataGrid -->
-                    <DataGrid Grid.Row="1" x:Name="grid" Margin="10" AutoGenerateColumns="True" 
-                              CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True"
-                              Background="White" GridLinesVisibility="All" HorizontalGridLinesBrush="#CCCCCC"
-                              VerticalGridLinesBrush="#CCCCCC" BorderThickness="1" BorderBrush="#999999"/>
+                        <!-- AGREGAR ARTÍCULO -->
+                        <Border Background="White" Padding="15" Margin="0,0,0,5">
+                            <StackPanel>
+                                <TextBlock Text="Agregar Artículo"
+                                           FontSize="14" FontWeight="Bold" Margin="0,0,0,10"/>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
 
-                    <!-- Panel de botones y total -->
-                    <Border Grid.Row="2" Margin="10" Background="White" Padding="15">
-                        <StackPanel Orientation="Horizontal">
-                        <Button x:Name="BtnEliminar" Click="BtnEliminar_Click" 
-                                Content="Eliminar Seleccionados" Width="150" Height="35" 
-                                Background="#F44336" Foreground="White" FontWeight="Bold" Margin="0,0,10,0"/>
+                                    <StackPanel Grid.Column="0" Margin="5">
+                                        <TextBlock Text="Producto" FontWeight="Bold" Margin="0,0,0,5"/>
+                                        <ComboBox x:Name="comboProducto" Height="30" Padding="8"/>
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="1" Margin="5">
+                                        <TextBlock Text="Proveedor" FontWeight="Bold" Margin="0,0,0,5"/>
+                                        <ComboBox x:Name="comboProveedor" Height="30" Padding="8"/>
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="2" Margin="5">
+                                        <TextBlock Text="Cantidad" FontWeight="Bold" Margin="0,0,0,5"/>
+                                        <TextBox x:Name="txtCantidad" Height="30" Padding="8" Text="1"/>
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="3" Margin="5">
+                                        <TextBlock Text="Precio Unitario" FontWeight="Bold" Margin="0,0,0,5"/>
+                                        <TextBox x:Name="txtPrecio" Height="30" Padding="8"
+                                                 IsReadOnly="True" Background="#EEEEEE"/>
+                                    </StackPanel>
+                                    <Button Grid.Column="4" Click="BtnAgregar_Click"
+                                            Content="Agregar" Width="100" Height="30"
+                                            Margin="5,18,5,0"
+                                            Background="#4CAF50" Foreground="White" FontWeight="Bold"/>
+                                    <Button Grid.Column="5" Click="BtnAbrirCatalogo_Click"
+                                            Content="Catálogo" Width="100" Height="30"
+                                            Margin="5,18,5,0"
+                                            Background="#2196F3" Foreground="White" FontWeight="Bold"/>
+                                </Grid>
+                            </StackPanel>
+                        </Border>
 
-                        <Button x:Name="BtnPDF" Click="BtnPDF_Click" 
-                                Content="Exportar PDF" Width="150" Height="35" 
-                                Background="#FF9800" Foreground="White" FontWeight="Bold" Margin="0,0,20,0"/>
+                        <!-- TABLA DE ARTÍCULOS -->
+                        <DataGrid x:Name="grid" Height="250" Margin="0,0,0,5"
+                                  AutoGenerateColumns="False"
+                                  CanUserAddRows="False" CanUserDeleteRows="False"
+                                  IsReadOnly="True" Background="White"
+                                  GridLinesVisibility="All"
+                                  HorizontalGridLinesBrush="#CCCCCC"
+                                  VerticalGridLinesBrush="#CCCCCC"
+                                  BorderThickness="1" BorderBrush="#999999">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Producto"
+                                                    Binding="{Binding Producto}" Width="2*"/>
+                                <DataGridTextColumn Header="Proveedor"
+                                                    Binding="{Binding Proveedor}" Width="2*"/>
+                                <DataGridTextColumn Header="Cantidad"
+                                                    Binding="{Binding Cantidad}" Width="*"/>
+                                <DataGridTextColumn Header="Unidad"
+                                                    Binding="{Binding Unidad}" Width="*"/>
+                                <DataGridTextColumn Header="Precio"
+                                                    Binding="{Binding Precio, StringFormat=\{0:C\}}" Width="*"/>
+                                <DataGridTextColumn Header="Subtotal"
+                                                    Binding="{Binding Subtotal, StringFormat=\{0:C\}}" Width="*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
 
-                        <TextBlock x:Name="lblTotal" FontSize="14" FontWeight="Bold" 
-                                   Text="Total: $0.00" VerticalAlignment="Center" Margin="20,0,0,0"/>
-                        </StackPanel>
-                    </Border>
-                </Grid>
+                        <!-- BOTONES Y TOTAL -->
+                        <Border Background="White" Padding="15">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Button Grid.Column="0" Click="BtnEliminar_Click"
+                                        Content="Eliminar Seleccionados"
+                                        Width="160" Height="35"
+                                        Background="#F44336" Foreground="White"
+                                        FontWeight="Bold" Margin="0,0,10,0"/>
+                                <Button Grid.Column="1" Click="BtnPDF_Click"
+                                        Content="Exportar PDF Cotización"
+                                        Width="180" Height="35"
+                                        Background="#FF9800" Foreground="White"
+                                        FontWeight="Bold" Margin="0,0,20,0"/>
+                                <TextBlock x:Name="lblTotal" Grid.Column="3"
+                                           FontSize="16" FontWeight="Bold"
+                                           Text="Total: $0.00"
+                                           VerticalAlignment="Center"/>
+                            </Grid>
+                        </Border>
+
+                    </StackPanel>
+                </ScrollViewer>
             </TabItem>
-            
-            
 
+            <!-- ═══════════════════════════════════════════════════ -->
+            <!-- TAB 2: APU                                          -->
+            <!-- ═══════════════════════════════════════════════════ -->
             <TabItem Header="APU - Análisis de Precios Unitarios">
                 <ScrollViewer VerticalScrollBarVisibility="Auto"
-                  HorizontalScrollBarVisibility="Disabled">
+                              HorizontalScrollBarVisibility="Disabled">
                     <StackPanel Margin="10">
 
                         <TextBlock Text="Análisis de Precios Unitarios"
-                       FontSize="20" FontWeight="Bold"
-                       Margin="0,0,0,10"
-                       HorizontalAlignment="Center"/>
+                                   FontSize="20" FontWeight="Bold"
+                                   Margin="0,0,0,10" HorizontalAlignment="Center"/>
 
                         <!-- ENCABEZADO OBRA -->
-                        <Border BorderBrush="#AAAAAA" BorderThickness="1"
-                    Margin="0,0,0,10">
+                        <Border BorderBrush="#AAAAAA" BorderThickness="1" Margin="0,0,0,10">
                             <Grid Background="#F0F0F0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="80"/>
@@ -113,35 +176,26 @@
                                     <RowDefinition Height="30"/>
                                 </Grid.RowDefinitions>
 
-                                <TextBlock Grid.Row="0" Grid.Column="0"
-                               Text="Obra:" FontWeight="Bold"
-                               VerticalAlignment="Center" Margin="5,0"/>
-                                <TextBox x:Name="txtApuObra"
-                             Grid.Row="0" Grid.Column="1"
-                             Height="24" Margin="3"
-                             VerticalAlignment="Center" Padding="3"/>
-                                <TextBlock Grid.Row="0" Grid.Column="2"
-                               Text="Lugar:" FontWeight="Bold"
-                               VerticalAlignment="Center" Margin="5,0"/>
-                                <TextBox x:Name="txtApuLugar"
-                             Grid.Row="0" Grid.Column="3"
-                             Height="24" Margin="3"
-                             VerticalAlignment="Center" Padding="3"/>
+                                <TextBlock Grid.Row="0" Grid.Column="0" Text="Obra:"
+                                           FontWeight="Bold" VerticalAlignment="Center" Margin="5,0"/>
+                                <TextBox x:Name="txtApuObra" Grid.Row="0" Grid.Column="1"
+                                         Height="24" Margin="3" VerticalAlignment="Center" Padding="3"/>
+                                <TextBlock Grid.Row="0" Grid.Column="2" Text="Lugar:"
+                                           FontWeight="Bold" VerticalAlignment="Center" Margin="5,0"/>
+                                <TextBox x:Name="txtApuLugar" Grid.Row="0" Grid.Column="3"
+                                         Height="24" Margin="3" VerticalAlignment="Center" Padding="3"/>
 
-                                <TextBlock Grid.Row="1" Grid.Column="0"
-                               Text="Análisis:" FontWeight="Bold"
-                               VerticalAlignment="Center" Margin="5,0"/>
-                                <TextBox x:Name="txtApuNumero"
-                             Grid.Row="1" Grid.Column="1"
-                             Height="24" Margin="3" Width="60"
-                             HorizontalAlignment="Left"
-                             VerticalAlignment="Center" Padding="3"/>
+                                <TextBlock Grid.Row="1" Grid.Column="0" Text="Análisis:"
+                                           FontWeight="Bold" VerticalAlignment="Center" Margin="5,0"/>
+                                <TextBox x:Name="txtApuNumero" Grid.Row="1" Grid.Column="1"
+                                         Height="24" Margin="3" Width="60"
+                                         HorizontalAlignment="Left" VerticalAlignment="Center" Padding="3"/>
                             </Grid>
                         </Border>
 
-                        <!-- FILA DESCRIPCIÓN DEL CONCEPTO -->
+                        <!-- DESCRIPCIÓN DEL CONCEPTO -->
                         <Border BorderBrush="#1a3a6b" BorderThickness="1"
-                    Background="#1a3a6b" Margin="0,0,0,2">
+                                Background="#1a3a6b" Margin="0,0,0,2">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="80"/>
@@ -150,121 +204,86 @@
                                     <ColumnDefinition Width="80"/>
                                     <ColumnDefinition Width="120"/>
                                 </Grid.ColumnDefinitions>
-
-                                <TextBlock Grid.Column="0"
-                               Text="Análisis:"
-                               Foreground="White" FontWeight="Bold"
-                               VerticalAlignment="Center" Margin="5,4"/>
-                                <TextBox x:Name="txtApuDescripcion"
-                             Grid.Column="1"
-                             Height="26" Margin="3,3"
-                             Padding="3" VerticalAlignment="Center"/>
-                                <TextBox x:Name="txtApuUnidad"
-                             Grid.Column="2"
-                             Height="26" Margin="3,3"
-                             Padding="3" VerticalAlignment="Center"/>
-                                <TextBox x:Name="txtApuCantidad"
-                             Grid.Column="3" Text="1"
-                             Height="26" Margin="3,3"
-                             Padding="3" VerticalAlignment="Center"/>
-                                <TextBlock x:Name="lblApuPrecioUnitario"
-                               Grid.Column="4"
-                               Text="$0.00"
-                               Foreground="White" FontWeight="Bold"
-                               FontSize="14"
-                               VerticalAlignment="Center"
-                               HorizontalAlignment="Center"/>
+                                <TextBlock Grid.Column="0" Text="Análisis:"
+                                           Foreground="White" FontWeight="Bold"
+                                           VerticalAlignment="Center" Margin="5,4"/>
+                                <TextBox x:Name="txtApuDescripcion" Grid.Column="1"
+                                         Height="26" Margin="3,3" Padding="3" VerticalAlignment="Center"/>
+                                <TextBox x:Name="txtApuUnidad" Grid.Column="2"
+                                         Height="26" Margin="3,3" Padding="3" VerticalAlignment="Center"/>
+                                <TextBox x:Name="txtApuCantidad" Grid.Column="3" Text="1"
+                                         Height="26" Margin="3,3" Padding="3" VerticalAlignment="Center"/>
+                                <TextBlock x:Name="lblApuPrecioUnitario" Grid.Column="4"
+                                           Text="$0.00" Foreground="White" FontWeight="Bold"
+                                           FontSize="14" VerticalAlignment="Center"
+                                           HorizontalAlignment="Center"/>
                             </Grid>
                         </Border>
 
-                        <!-- ═══════════ SECCIÓN MATERIALES ═══════════ -->
+                        <!-- ═══════ MATERIALES ═══════ -->
                         <Border Background="#5a7fa8" Margin="0,5,0,0">
-                            <TextBlock Text="MATERIALES"
-                           Foreground="White" FontWeight="Bold"
-                           Padding="8,4"/>
+                            <TextBlock Text="MATERIALES" Foreground="White"
+                                       FontWeight="Bold" Padding="8,4"/>
                         </Border>
 
-                        <!-- Catálogo para seleccionar materiales -->
-                        <Border BorderBrush="#CCCCCC" BorderThickness="1"
-                    Margin="0,0,0,2">
+                        <Border BorderBrush="#CCCCCC" BorderThickness="1" Margin="0,0,0,2">
                             <StackPanel>
                                 <TextBlock Text="Catálogo de Materiales"
-                               FontSize="11" Foreground="Gray"
-                               Margin="5,3"/>
-                                <DataGrid x:Name="gridCatalogoMateriales"
-                              Height="120"
-                              AutoGenerateColumns="False"
-                              SelectionMode="Single"
-                              CanUserAddRows="False"
-                              IsReadOnly="True"
-                              GridLinesVisibility="Horizontal"
-                              HeadersVisibility="Column"
-                              FontSize="12">
+                                           FontSize="11" Foreground="Gray" Margin="5,3"/>
+                                <DataGrid x:Name="gridCatalogoMateriales" Height="120"
+                                          AutoGenerateColumns="False" SelectionMode="Single"
+                                          CanUserAddRows="False" IsReadOnly="True"
+                                          GridLinesVisibility="Horizontal"
+                                          HeadersVisibility="Column" FontSize="12">
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Header="N° Serie"
-                                                Binding="{Binding NumeroSerie}"
-                                                Width="90"/>
+                                                            Binding="{Binding NumeroSerie}" Width="90"/>
                                         <DataGridTextColumn Header="Material"
-                                                Binding="{Binding Material}"
-                                                Width="*"/>
+                                                            Binding="{Binding Material}" Width="*"/>
                                         <DataGridTextColumn Header="Unidad"
-                                                Binding="{Binding Unidad}"
-                                                Width="70"/>
+                                                            Binding="{Binding Unidad}" Width="70"/>
                                         <DataGridTextColumn Header="P. Unitario"
-                                                Binding="{Binding PrecioUnitario, StringFormat=\{0:0.00\}}"
-                                                Width="90"/>
+                                                            Binding="{Binding PrecioUnitario, StringFormat=\{0:0.00\}}"
+                                                            Width="90"/>
                                     </DataGrid.Columns>
                                 </DataGrid>
                                 <StackPanel Orientation="Horizontal" Margin="5,4">
                                     <TextBlock Text="Cantidad:" VerticalAlignment="Center" Margin="0,0,5,0"/>
                                     <TextBox x:Name="txtCantidadMaterial"
-                                 Width="60" Height="26" Text="1" Padding="3"/>
-                                    <Button Content="+ Agregar Material"
-                                Height="26" Margin="8,0,5,0" Padding="8,0"
-                                Background="#1a3a6b" Foreground="White"
-                                Click="BtnAgregarMaterialAPU_Click"/>
-                                    <Button Content="- Quitar"
-                                Height="26" Padding="8,0"
-                                Background="#8B0000" Foreground="White"
-                                Click="BtnQuitarMaterialAPU_Click"/>
+                                             Width="60" Height="26" Text="1" Padding="3"/>
+                                    <Button Content="+ Agregar" Height="26" Margin="8,0,5,0" Padding="8,0"
+                                            Background="#1a3a6b" Foreground="White"
+                                            Click="BtnAgregarMaterialAPU_Click"/>
+                                    <Button Content="- Quitar" Height="26" Padding="8,0"
+                                            Background="#8B0000" Foreground="White"
+                                            Click="BtnQuitarMaterialAPU_Click"/>
                                 </StackPanel>
                             </StackPanel>
                         </Border>
 
-                        <!-- Tabla materiales seleccionados -->
-                        <DataGrid x:Name="gridMaterialesSeleccionados"
-                      Height="100"
-                      AutoGenerateColumns="False"
-                      SelectionMode="Single"
-                      CanUserAddRows="False"
-                      IsReadOnly="True"
-                      GridLinesVisibility="Horizontal"
-                      HeadersVisibility="Column"
-                      FontSize="12"
-                      Margin="0,0,0,0">
+                        <DataGrid x:Name="gridMaterialesSeleccionados" Height="100"
+                                  AutoGenerateColumns="False" SelectionMode="Single"
+                                  CanUserAddRows="False" IsReadOnly="True"
+                                  GridLinesVisibility="Horizontal"
+                                  HeadersVisibility="Column" FontSize="12" Margin="0,0,0,0">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="N° Serie"
-                                        Binding="{Binding NumeroSerie}"
-                                        Width="90"/>
+                                                    Binding="{Binding NumeroSerie}" Width="90"/>
                                 <DataGridTextColumn Header="Material"
-                                        Binding="{Binding Material}"
-                                        Width="*"/>
+                                                    Binding="{Binding Material}" Width="*"/>
                                 <DataGridTextColumn Header="Unidad"
-                                        Binding="{Binding Unidad}"
-                                        Width="70"/>
+                                                    Binding="{Binding Unidad}" Width="70"/>
                                 <DataGridTextColumn Header="P. Unitario"
-                                        Binding="{Binding PrecioUnitario, StringFormat=\{0:0.00\}}"
-                                        Width="90"/>
+                                                    Binding="{Binding PrecioUnitario, StringFormat=\{0:0.00\}}"
+                                                    Width="90"/>
                                 <DataGridTextColumn Header="Cantidad"
-                                        Binding="{Binding Cantidad}"
-                                        Width="70"/>
+                                                    Binding="{Binding Cantidad}" Width="70"/>
                                 <DataGridTextColumn Header="Subtotal"
-                                        Binding="{Binding Subtotal, StringFormat=\{0:0.00\}}"
-                                        Width="90"/>
+                                                    Binding="{Binding Subtotal, StringFormat=\{0:0.00\}}"
+                                                    Width="90"/>
                             </DataGrid.Columns>
                         </DataGrid>
 
-                        <!-- Subtotal Materiales -->
                         <Border Background="#1a3a6b" Margin="0,0,0,5">
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -272,67 +291,84 @@
                                     <ColumnDefinition Width="120"/>
                                     <ColumnDefinition Width="80"/>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0"
-                               Text="SUBTOTAL:  MATERIALES"
-                               Foreground="White" FontWeight="Bold"
-                               Padding="8,4"/>
-                                <TextBlock x:Name="lblSubtotalMateriales"
-                               Grid.Column="1"
-                               Text="$0.00"
-                               Foreground="White" FontWeight="Bold"
-                               HorizontalAlignment="Right"
-                               Padding="5,4"/>
-                                <TextBlock x:Name="lblPctMateriales"
-                               Grid.Column="2"
-                               Text="0.00%"
-                               Foreground="White"
-                               HorizontalAlignment="Right"
-                               Padding="5,4"/>
+                                <TextBlock Grid.Column="0" Text="SUBTOTAL:  MATERIALES"
+                                           Foreground="White" FontWeight="Bold" Padding="8,4"/>
+                                <TextBlock x:Name="lblSubtotalMateriales" Grid.Column="1"
+                                           Text="$0.00" Foreground="White" FontWeight="Bold"
+                                           HorizontalAlignment="Right" Padding="5,4"/>
+                                <TextBlock x:Name="lblPctMateriales" Grid.Column="2"
+                                           Text="0.00%" Foreground="White"
+                                           HorizontalAlignment="Right" Padding="5,4"/>
                             </Grid>
                         </Border>
 
-                        <!-- ═══════════ SECCIÓN MANO DE OBRA ═══════════ -->
+                        <!-- ═══════ MANO DE OBRA ═══════ -->
                         <Border Background="#5a7fa8" Margin="0,5,0,0">
-                            <TextBlock Text="MANO DE OBRA"
-                           Foreground="White" FontWeight="Bold"
-                           Padding="8,4"/>
+                            <TextBlock Text="MANO DE OBRA" Foreground="White"
+                                       FontWeight="Bold" Padding="8,4"/>
                         </Border>
 
-                        <DataGrid x:Name="gridManoObra"
-                      Height="120"
-                      AutoGenerateColumns="False"
-                      SelectionMode="Single"
-                      CanUserAddRows="True"
-                      IsReadOnly="False"
-                      GridLinesVisibility="Horizontal"
-                      HeadersVisibility="Column"
-                      FontSize="12"
-                      Margin="0,0,0,0"
-                      CellEditEnding="Grid_CellEditEnding">
+                        <!-- Catálogo Mano de Obra -->
+                        <Border BorderBrush="#CCCCCC" BorderThickness="1" Margin="0,0,0,2">
+                            <StackPanel>
+                                <TextBlock Text="Catálogo de Mano de Obra"
+                                           FontSize="11" Foreground="Gray" Margin="5,3"/>
+                                <DataGrid x:Name="gridCatalogoManoObra" Height="100"
+                                          AutoGenerateColumns="False" SelectionMode="Single"
+                                          CanUserAddRows="False" IsReadOnly="True"
+                                          GridLinesVisibility="Horizontal"
+                                          HeadersVisibility="Column" FontSize="12">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Clave"
+                                                            Binding="{Binding NumeroSerie}" Width="90"/>
+                                        <DataGridTextColumn Header="Descripción"
+                                                            Binding="{Binding Material}" Width="*"/>
+                                        <DataGridTextColumn Header="Unidad"
+                                                            Binding="{Binding Unidad}" Width="70"/>
+                                        <DataGridTextColumn Header="Salario"
+                                                            Binding="{Binding PrecioUnitario, StringFormat=\{0:0.00\}}"
+                                                            Width="90"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                                <StackPanel Orientation="Horizontal" Margin="5,4">
+                                    <TextBlock Text="Cantidad:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                                    <TextBox x:Name="txtCantidadManoObra"
+                                             Width="60" Height="26" Text="1" Padding="3"/>
+                                    <Button Content="+ Agregar" Height="26" Margin="8,0,5,0" Padding="8,0"
+                                            Background="#1a3a6b" Foreground="White"
+                                            Click="BtnAgregarManoObra_Click"/>
+                                    <Button Content="- Quitar" Height="26" Padding="8,0"
+                                            Background="#8B0000" Foreground="White"
+                                            Click="BtnQuitarManoObra_Click"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- Tabla Mano de Obra seleccionada (también editable directo) -->
+                        <DataGrid x:Name="gridManoObra" Height="120"
+                                  AutoGenerateColumns="False" SelectionMode="Single"
+                                  CanUserAddRows="True" IsReadOnly="False"
+                                  GridLinesVisibility="Horizontal"
+                                  HeadersVisibility="Column" FontSize="12" Margin="0,0,0,0"
+                                  CellEditEnding="Grid_CellEditEnding">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Clave"
-                                        Binding="{Binding NumeroSerie}"
-                                        Width="90"/>
+                                                    Binding="{Binding NumeroSerie}" Width="90"/>
                                 <DataGridTextColumn Header="Descripción"
-                                        Binding="{Binding Material}"
-                                        Width="*"/>
+                                                    Binding="{Binding Material}" Width="*"/>
                                 <DataGridTextColumn Header="Unidad"
-                                        Binding="{Binding Unidad}"
-                                        Width="70"/>
+                                                    Binding="{Binding Unidad}" Width="70"/>
                                 <DataGridTextColumn Header="Salario"
-                                        Binding="{Binding PrecioUnitario, StringFormat=\{0:0.00\}}"
-                                        Width="90"/>
+                                                    Binding="{Binding PrecioUnitario, StringFormat=\{0:0.00\}}"
+                                                    Width="90"/>
                                 <DataGridTextColumn Header="Cantidad"
-                                        Binding="{Binding Cantidad}"
-                                        Width="70"/>
+                                                    Binding="{Binding Cantidad}" Width="70"/>
                                 <DataGridTextColumn Header="Importe"
-                                        Binding="{Binding Subtotal, StringFormat=\{0:0.00\}}"
-                                        Width="90"
-                                        IsReadOnly="True"/>
+                                                    Binding="{Binding Subtotal, StringFormat=\{0:0.00\}}"
+                                                    Width="90" IsReadOnly="True"/>
                             </DataGrid.Columns>
                         </DataGrid>
 
-                        <!-- Subtotal Mano de Obra -->
                         <Border Background="#1a3a6b" Margin="0,0,0,5">
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -340,67 +376,84 @@
                                     <ColumnDefinition Width="120"/>
                                     <ColumnDefinition Width="80"/>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0"
-                               Text="SUBTOTAL:  MANO DE OBRA"
-                               Foreground="White" FontWeight="Bold"
-                               Padding="8,4"/>
-                                <TextBlock x:Name="lblSubtotalManoObra"
-                               Grid.Column="1"
-                               Text="$0.00"
-                               Foreground="White" FontWeight="Bold"
-                               HorizontalAlignment="Right"
-                               Padding="5,4"/>
-                                <TextBlock x:Name="lblPctManoObra"
-                               Grid.Column="2"
-                               Text="0.00%"
-                               Foreground="White"
-                               HorizontalAlignment="Right"
-                               Padding="5,4"/>
+                                <TextBlock Grid.Column="0" Text="SUBTOTAL:  MANO DE OBRA"
+                                           Foreground="White" FontWeight="Bold" Padding="8,4"/>
+                                <TextBlock x:Name="lblSubtotalManoObra" Grid.Column="1"
+                                           Text="$0.00" Foreground="White" FontWeight="Bold"
+                                           HorizontalAlignment="Right" Padding="5,4"/>
+                                <TextBlock x:Name="lblPctManoObra" Grid.Column="2"
+                                           Text="0.00%" Foreground="White"
+                                           HorizontalAlignment="Right" Padding="5,4"/>
                             </Grid>
                         </Border>
 
-                        <!-- ═══════════ SECCIÓN EQUIPO Y HERRAMIENTA ═══════════ -->
+                        <!-- ═══════ EQUIPO Y HERRAMIENTA ═══════ -->
                         <Border Background="#5a7fa8" Margin="0,5,0,0">
-                            <TextBlock Text="EQUIPO Y HERRAMIENTA"
-                           Foreground="White" FontWeight="Bold"
-                           Padding="8,4"/>
+                            <TextBlock Text="EQUIPO Y HERRAMIENTA" Foreground="White"
+                                       FontWeight="Bold" Padding="8,4"/>
                         </Border>
 
-                        <DataGrid x:Name="gridEquipo"
-                      Height="120"
-                      AutoGenerateColumns="False"
-                      SelectionMode="Single"
-                      CanUserAddRows="True"
-                      IsReadOnly="False"
-                      GridLinesVisibility="Horizontal"
-                      HeadersVisibility="Column"
-                      FontSize="12"
-                      Margin="0,0,0,0"
-                      CellEditEnding="Grid_CellEditEnding">
+                        <!-- Catálogo Equipo -->
+                        <Border BorderBrush="#CCCCCC" BorderThickness="1" Margin="0,0,0,2">
+                            <StackPanel>
+                                <TextBlock Text="Catálogo de Equipo y Herramienta"
+                                           FontSize="11" Foreground="Gray" Margin="5,3"/>
+                                <DataGrid x:Name="gridCatalogoEquipo" Height="100"
+                                          AutoGenerateColumns="False" SelectionMode="Single"
+                                          CanUserAddRows="False" IsReadOnly="True"
+                                          GridLinesVisibility="Horizontal"
+                                          HeadersVisibility="Column" FontSize="12">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Clave"
+                                                            Binding="{Binding NumeroSerie}" Width="90"/>
+                                        <DataGridTextColumn Header="Descripción"
+                                                            Binding="{Binding Material}" Width="*"/>
+                                        <DataGridTextColumn Header="Unidad"
+                                                            Binding="{Binding Unidad}" Width="70"/>
+                                        <DataGridTextColumn Header="Costo/Hr"
+                                                            Binding="{Binding PrecioUnitario, StringFormat=\{0:0.00\}}"
+                                                            Width="90"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                                <StackPanel Orientation="Horizontal" Margin="5,4">
+                                    <TextBlock Text="Cantidad:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                                    <TextBox x:Name="txtCantidadEquipo"
+                                             Width="60" Height="26" Text="1" Padding="3"/>
+                                    <Button Content="+ Agregar" Height="26" Margin="8,0,5,0" Padding="8,0"
+                                            Background="#1a3a6b" Foreground="White"
+                                            Click="BtnAgregarEquipo_Click"/>
+                                    <Button Content="- Quitar" Height="26" Padding="8,0"
+                                            Background="#8B0000" Foreground="White"
+                                            Click="BtnQuitarEquipo_Click"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- Tabla Equipo seleccionado (también editable directo) -->
+                        <DataGrid x:Name="gridEquipo" Height="120"
+                                  AutoGenerateColumns="False" SelectionMode="Single"
+                                  CanUserAddRows="True" IsReadOnly="False"
+                                  GridLinesVisibility="Horizontal"
+                                  HeadersVisibility="Column" FontSize="12" Margin="0,0,0,0"
+                                  CellEditEnding="Grid_CellEditEnding">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Clave"
-                                        Binding="{Binding NumeroSerie}"
-                                        Width="90"/>
+                                                    Binding="{Binding NumeroSerie}" Width="90"/>
                                 <DataGridTextColumn Header="Descripción"
-                                        Binding="{Binding Material}"
-                                        Width="*"/>
+                                                    Binding="{Binding Material}" Width="*"/>
                                 <DataGridTextColumn Header="Unidad"
-                                        Binding="{Binding Unidad}"
-                                        Width="70"/>
+                                                    Binding="{Binding Unidad}" Width="70"/>
                                 <DataGridTextColumn Header="Costo/Hr"
-                                        Binding="{Binding PrecioUnitario, StringFormat=\{0:0.00\}}"
-                                        Width="90"/>
+                                                    Binding="{Binding PrecioUnitario, StringFormat=\{0:0.00\}}"
+                                                    Width="90"/>
                                 <DataGridTextColumn Header="Cantidad"
-                                        Binding="{Binding Cantidad}"
-                                        Width="70"/>
+                                                    Binding="{Binding Cantidad}" Width="70"/>
                                 <DataGridTextColumn Header="Importe"
-                                        Binding="{Binding Subtotal, StringFormat=\{0:0.00\}}"
-                                        Width="90"
-                                        IsReadOnly="True"/>
+                                                    Binding="{Binding Subtotal, StringFormat=\{0:0.00\}}"
+                                                    Width="90" IsReadOnly="True"/>
                             </DataGrid.Columns>
                         </DataGrid>
 
-                        <!-- Subtotal Equipo -->
                         <Border Background="#1a3a6b" Margin="0,0,0,5">
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -408,55 +461,37 @@
                                     <ColumnDefinition Width="120"/>
                                     <ColumnDefinition Width="80"/>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0"
-                               Text="SUBTOTAL:  EQUIPO Y HERRAMIENTA"
-                               Foreground="White" FontWeight="Bold"
-                               Padding="8,4"/>
-                                <TextBlock x:Name="lblSubtotalEquipo"
-                               Grid.Column="1"
-                               Text="$0.00"
-                               Foreground="White" FontWeight="Bold"
-                               HorizontalAlignment="Right"
-                               Padding="5,4"/>
-                                <TextBlock x:Name="lblPctEquipo"
-                               Grid.Column="2"
-                               Text="0.00%"
-                               Foreground="White"
-                               HorizontalAlignment="Right"
-                               Padding="5,4"/>
+                                <TextBlock Grid.Column="0" Text="SUBTOTAL:  EQUIPO Y HERRAMIENTA"
+                                           Foreground="White" FontWeight="Bold" Padding="8,4"/>
+                                <TextBlock x:Name="lblSubtotalEquipo" Grid.Column="1"
+                                           Text="$0.00" Foreground="White" FontWeight="Bold"
+                                           HorizontalAlignment="Right" Padding="5,4"/>
+                                <TextBlock x:Name="lblPctEquipo" Grid.Column="2"
+                                           Text="0.00%" Foreground="White"
+                                           HorizontalAlignment="Right" Padding="5,4"/>
                             </Grid>
                         </Border>
 
-                        <!-- ═══════════ RESUMEN FINAL ═══════════ -->
+                        <!-- ═══════ RESUMEN FINAL ═══════ -->
                         <Border BorderBrush="#AAAAAA" BorderThickness="1"
-                    Margin="0,10,0,10" Padding="0">
+                                Margin="0,10,0,10" Padding="0">
                             <StackPanel>
 
-                                <!-- Costo Directo -->
                                 <Grid Background="#1a3a6b">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="120"/>
                                         <ColumnDefinition Width="80"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Grid.Column="0"
-                                   Text="(CD) Costo directo"
-                                   Foreground="White" FontWeight="Bold"
-                                   Padding="8,5"/>
-                                    <TextBlock x:Name="lblCostoDirecto"
-                                   Grid.Column="1"
-                                   Text="$0.00"
-                                   Foreground="White" FontWeight="Bold"
-                                   HorizontalAlignment="Right"
-                                   Padding="5,5"/>
-                                    <TextBlock Grid.Column="2"
-                                   Text="100.00%"
-                                   Foreground="White"
-                                   HorizontalAlignment="Right"
-                                   Padding="5,5"/>
+                                    <TextBlock Grid.Column="0" Text="(CD) Costo directo"
+                                               Foreground="White" FontWeight="Bold" Padding="8,5"/>
+                                    <TextBlock x:Name="lblCostoDirecto" Grid.Column="1"
+                                               Text="$0.00" Foreground="White" FontWeight="Bold"
+                                               HorizontalAlignment="Right" Padding="5,5"/>
+                                    <TextBlock Grid.Column="2" Text="100.00%"
+                                               Foreground="White" HorizontalAlignment="Right" Padding="5,5"/>
                                 </Grid>
 
-                                <!-- Indirectos -->
                                 <Grid Background="#f5f5f5">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
@@ -464,25 +499,19 @@
                                         <ColumnDefinition Width="120"/>
                                         <ColumnDefinition Width="80"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Grid.Column="0"
-                                   Text="(CI) INDIRECTOS"
-                                   Padding="8,5" VerticalAlignment="Center"/>
+                                    <TextBlock Grid.Column="0" Text="(CI) INDIRECTOS"
+                                               Padding="8,5" VerticalAlignment="Center"/>
                                     <StackPanel Grid.Column="1" Orientation="Horizontal"
-                                    VerticalAlignment="Center">
-                                        <TextBox x:Name="txtApuIndirectos"
-                                     Width="55" Height="24" Text="12.5"
-                                     Padding="3" TextChanged="TxtFactor_TextChanged"/>
+                                                VerticalAlignment="Center">
+                                        <TextBox x:Name="txtApuIndirectos" Width="55" Height="24"
+                                                 Text="12.5" Padding="3"
+                                                 TextChanged="TxtFactor_TextChanged"/>
                                         <TextBlock Text="%" VerticalAlignment="Center" Margin="3,0,0,0"/>
                                     </StackPanel>
-                                    <TextBlock x:Name="lblIndirectos"
-                                   Grid.Column="2"
-                                   Text="$0.00"
-                                   HorizontalAlignment="Right"
-                                   Padding="5,5"/>
-                                    <TextBlock Grid.Column="3" Text="" Padding="5,5"/>
+                                    <TextBlock x:Name="lblIndirectos" Grid.Column="2"
+                                               Text="$0.00" HorizontalAlignment="Right" Padding="5,5"/>
                                 </Grid>
 
-                                <!-- Subtotal 1 -->
                                 <Grid Background="#ddeeff">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
@@ -490,18 +519,13 @@
                                         <ColumnDefinition Width="120"/>
                                         <ColumnDefinition Width="80"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Grid.Column="0"
-                                   Text="SUBTOTAL 1"
-                                   FontWeight="Bold" Padding="8,5"/>
-                                    <TextBlock Grid.Column="2"
-                                   x:Name="lblSubtotal1"
-                                   Text="$0.00"
-                                   FontWeight="Bold"
-                                   HorizontalAlignment="Right"
-                                   Padding="5,5"/>
+                                    <TextBlock Grid.Column="0" Text="SUBTOTAL 1"
+                                               FontWeight="Bold" Padding="8,5"/>
+                                    <TextBlock x:Name="lblSubtotal1" Grid.Column="2"
+                                               Text="$0.00" FontWeight="Bold"
+                                               HorizontalAlignment="Right" Padding="5,5"/>
                                 </Grid>
 
-                                <!-- Financiamiento -->
                                 <Grid Background="#f5f5f5">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
@@ -509,24 +533,19 @@
                                         <ColumnDefinition Width="120"/>
                                         <ColumnDefinition Width="80"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Grid.Column="0"
-                                   Text="(CF) FINANCIAMIENTO"
-                                   Padding="8,5" VerticalAlignment="Center"/>
+                                    <TextBlock Grid.Column="0" Text="(CF) FINANCIAMIENTO"
+                                               Padding="8,5" VerticalAlignment="Center"/>
                                     <StackPanel Grid.Column="1" Orientation="Horizontal"
-                                    VerticalAlignment="Center">
-                                        <TextBox x:Name="txtApuFinanciamiento"
-                                     Width="55" Height="24" Text="0"
-                                     Padding="3" TextChanged="TxtFactor_TextChanged"/>
+                                                VerticalAlignment="Center">
+                                        <TextBox x:Name="txtApuFinanciamiento" Width="55" Height="24"
+                                                 Text="0" Padding="3"
+                                                 TextChanged="TxtFactor_TextChanged"/>
                                         <TextBlock Text="%" VerticalAlignment="Center" Margin="3,0,0,0"/>
                                     </StackPanel>
-                                    <TextBlock x:Name="lblFinanciamiento"
-                                   Grid.Column="2"
-                                   Text="$0.00"
-                                   HorizontalAlignment="Right"
-                                   Padding="5,5"/>
+                                    <TextBlock x:Name="lblFinanciamiento" Grid.Column="2"
+                                               Text="$0.00" HorizontalAlignment="Right" Padding="5,5"/>
                                 </Grid>
 
-                                <!-- Subtotal 2 -->
                                 <Grid Background="#ddeeff">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
@@ -534,18 +553,13 @@
                                         <ColumnDefinition Width="120"/>
                                         <ColumnDefinition Width="80"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Grid.Column="0"
-                                   Text="SUBTOTAL 2"
-                                   FontWeight="Bold" Padding="8,5"/>
-                                    <TextBlock Grid.Column="2"
-                                   x:Name="lblSubtotal2"
-                                   Text="$0.00"
-                                   FontWeight="Bold"
-                                   HorizontalAlignment="Right"
-                                   Padding="5,5"/>
+                                    <TextBlock Grid.Column="0" Text="SUBTOTAL 2"
+                                               FontWeight="Bold" Padding="8,5"/>
+                                    <TextBlock x:Name="lblSubtotal2" Grid.Column="2"
+                                               Text="$0.00" FontWeight="Bold"
+                                               HorizontalAlignment="Right" Padding="5,5"/>
                                 </Grid>
 
-                                <!-- Utilidad -->
                                 <Grid Background="#f5f5f5">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
@@ -553,24 +567,19 @@
                                         <ColumnDefinition Width="120"/>
                                         <ColumnDefinition Width="80"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Grid.Column="0"
-                                   Text="(CU) UTILIDAD"
-                                   Padding="8,5" VerticalAlignment="Center"/>
+                                    <TextBlock Grid.Column="0" Text="(CU) UTILIDAD"
+                                               Padding="8,5" VerticalAlignment="Center"/>
                                     <StackPanel Grid.Column="1" Orientation="Horizontal"
-                                    VerticalAlignment="Center">
-                                        <TextBox x:Name="txtApuUtilidad"
-                                     Width="55" Height="24" Text="12.5"
-                                     Padding="3" TextChanged="TxtFactor_TextChanged"/>
+                                                VerticalAlignment="Center">
+                                        <TextBox x:Name="txtApuUtilidad" Width="55" Height="24"
+                                                 Text="12.5" Padding="3"
+                                                 TextChanged="TxtFactor_TextChanged"/>
                                         <TextBlock Text="%" VerticalAlignment="Center" Margin="3,0,0,0"/>
                                     </StackPanel>
-                                    <TextBlock x:Name="lblUtilidad"
-                                   Grid.Column="2"
-                                   Text="$0.00"
-                                   HorizontalAlignment="Right"
-                                   Padding="5,5"/>
+                                    <TextBlock x:Name="lblUtilidad" Grid.Column="2"
+                                               Text="$0.00" HorizontalAlignment="Right" Padding="5,5"/>
                                 </Grid>
 
-                                <!-- Precio Unitario -->
                                 <Grid Background="#1a3a6b">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
@@ -579,19 +588,14 @@
                                         <ColumnDefinition Width="80"/>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Column="0"
-                                   Text="PRECIO UNITARIO  (CD+CI+CF+CU)"
-                                   Foreground="White" FontWeight="Bold"
-                                   FontSize="13" Padding="8,6"/>
-                                    <TextBlock x:Name="lblResTotal"
-                                   Grid.Column="2"
-                                   Text="$0.00"
-                                   Foreground="White" FontWeight="Bold"
-                                   FontSize="14"
-                                   HorizontalAlignment="Right"
-                                   Padding="5,6"/>
+                                               Text="PRECIO UNITARIO  (CD+CI+CF+CU)"
+                                               Foreground="White" FontWeight="Bold"
+                                               FontSize="13" Padding="8,6"/>
+                                    <TextBlock x:Name="lblResTotal" Grid.Column="2"
+                                               Text="$0.00" Foreground="White" FontWeight="Bold"
+                                               FontSize="14" HorizontalAlignment="Right" Padding="5,6"/>
                                 </Grid>
 
-                                <!-- IVA -->
                                 <Grid Background="#f5f5f5">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
@@ -599,24 +603,19 @@
                                         <ColumnDefinition Width="120"/>
                                         <ColumnDefinition Width="80"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Grid.Column="0"
-                                   Text="IVA"
-                                   Padding="8,5" VerticalAlignment="Center"/>
+                                    <TextBlock Grid.Column="0" Text="IVA"
+                                               Padding="8,5" VerticalAlignment="Center"/>
                                     <StackPanel Grid.Column="1" Orientation="Horizontal"
-                                    VerticalAlignment="Center">
-                                        <TextBox x:Name="txtApuIva"
-                                     Width="55" Height="24" Text="16"
-                                     Padding="3" TextChanged="TxtFactor_TextChanged"/>
+                                                VerticalAlignment="Center">
+                                        <TextBox x:Name="txtApuIva" Width="55" Height="24"
+                                                 Text="16" Padding="3"
+                                                 TextChanged="TxtFactor_TextChanged"/>
                                         <TextBlock Text="%" VerticalAlignment="Center" Margin="3,0,0,0"/>
                                     </StackPanel>
-                                    <TextBlock x:Name="lblResIva"
-                                   Grid.Column="2"
-                                   Text="$0.00"
-                                   HorizontalAlignment="Right"
-                                   Padding="5,5"/>
+                                    <TextBlock x:Name="lblResIva" Grid.Column="2"
+                                               Text="$0.00" HorizontalAlignment="Right" Padding="5,5"/>
                                 </Grid>
 
-                                <!-- Total con IVA -->
                                 <Grid Background="#003366">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
@@ -624,36 +623,110 @@
                                         <ColumnDefinition Width="120"/>
                                         <ColumnDefinition Width="80"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Grid.Column="0"
-                                   Text="TOTAL CON IVA"
-                                   Foreground="White" FontWeight="Bold"
-                                   FontSize="14" Padding="8,6"/>
-                                    <TextBlock x:Name="lblTotalConIva"
-                                   Grid.Column="2"
-                                   Text="$0.00"
-                                   Foreground="Yellow" FontWeight="Bold"
-                                   FontSize="15"
-                                   HorizontalAlignment="Right"
-                                   Padding="5,6"/>
+                                    <TextBlock Grid.Column="0" Text="TOTAL CON IVA"
+                                               Foreground="White" FontWeight="Bold"
+                                               FontSize="14" Padding="8,6"/>
+                                    <TextBlock x:Name="lblTotalConIva" Grid.Column="2"
+                                               Text="$0.00" Foreground="Yellow" FontWeight="Bold"
+                                               FontSize="15" HorizontalAlignment="Right" Padding="5,6"/>
                                 </Grid>
 
                             </StackPanel>
                         </Border>
 
-                        <!-- BOTONES -->
-                        <WrapPanel Margin="0,5,0,15">
-                            <Button Content="Calcular"
-                        Width="120" Height="35" Margin="5"
-                        Click="BtnCalcularAPU_Click"/>
-                            <Button Content="Exportar PDF"
-                        Width="130" Height="35" Margin="5"
-                        Click="BtnApuPDF_Click"/>
+                        <!-- BOTONES APU -->
+                        <WrapPanel Margin="0,5,0,10">
+                            <Button Content="Calcular" Width="120" Height="35" Margin="5"
+                                    Click="BtnCalcularAPU_Click"/>
+                            <Button Content="Exportar PDF APU + Presupuesto"
+                                    Width="220" Height="35" Margin="5"
+                                    Background="#FF9800" Foreground="White" FontWeight="Bold"
+                                    Click="BtnApuPDF_Click"/>
                         </WrapPanel>
 
-                        
+                        <!-- ═══════ TABLA DE PRESUPUESTO ═══════ -->
+                        <Border Background="#1a3a6b" Margin="0,10,0,0">
+                            <TextBlock Text="PRESUPUESTO"
+                                       Foreground="White" FontWeight="Bold"
+                                       FontSize="14" Padding="10,6"
+                                       HorizontalAlignment="Center"/>
+                        </Border>
+
+                        <Border BorderBrush="#AAAAAA" BorderThickness="1" Margin="0,0,0,5">
+                            <DataGrid x:Name="gridPresupuesto" Height="200"
+                                      AutoGenerateColumns="False"
+                                      CanUserAddRows="False" IsReadOnly="True"
+                                      GridLinesVisibility="All"
+                                      HorizontalGridLinesBrush="#CCCCCC"
+                                      VerticalGridLinesBrush="#CCCCCC"
+                                      HeadersVisibility="Column" FontSize="12">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="No."
+                                                        Binding="{Binding No}" Width="40"/>
+                                    <DataGridTextColumn Header="CONCEPTO"
+                                                        Binding="{Binding Concepto}" Width="3*"/>
+                                    <DataGridTextColumn Header="UNIDAD"
+                                                        Binding="{Binding Unidad}" Width="70"/>
+                                    <DataGridTextColumn Header="CANTIDAD"
+                                                        Binding="{Binding Cantidad, StringFormat=\{0:0.0000\}}"
+                                                        Width="90"/>
+                                    <DataGridTextColumn Header="P.U."
+                                                        Binding="{Binding PU, StringFormat=\{0:C\}}"
+                                                        Width="100"/>
+                                    <DataGridTextColumn Header="IMPORTE"
+                                                        Binding="{Binding Importe, StringFormat=\{0:C\}}"
+                                                        Width="110"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Border>
+
+                        <!-- TOTALES PRESUPUESTO -->
+                        <Border Background="White" BorderBrush="#AAAAAA"
+                                BorderThickness="1" Padding="10" Margin="0,0,0,10">
+                            <Grid HorizontalAlignment="Right" Width="300">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="130"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="35"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Grid.Row="0" Grid.Column="0" Text="SUB:"
+                                           FontWeight="Bold" VerticalAlignment="Center"/>
+                                <TextBlock x:Name="lblPresupuestoSub" Grid.Row="0" Grid.Column="1"
+                                           Text="$0.00" HorizontalAlignment="Right"
+                                           VerticalAlignment="Center"/>
+
+                                <TextBlock Grid.Row="1" Grid.Column="0" Text="IVA (16%):"
+                                           FontWeight="Bold" VerticalAlignment="Center"/>
+                                <TextBlock x:Name="lblPresupuestoIva" Grid.Row="1" Grid.Column="1"
+                                           Text="$0.00" HorizontalAlignment="Right"
+                                           VerticalAlignment="Center"/>
+
+                                <TextBlock Grid.Row="2" Grid.Column="0" Text="TOTAL:"
+                                           FontSize="16" FontWeight="Bold" VerticalAlignment="Center"/>
+                                <TextBlock x:Name="lblPresupuestoTotal" Grid.Row="2" Grid.Column="1"
+                                           Text="$0.00" FontSize="16" FontWeight="Bold"
+                                           Foreground="DarkGreen" HorizontalAlignment="Right"
+                                           VerticalAlignment="Center"/>
+                            </Grid>
+                        </Border>
+
+                        <!-- Botón PDF solo presupuesto -->
+                        <WrapPanel Margin="0,0,0,15">
+                            <Button Content="Exportar solo Presupuesto PDF"
+                                    Width="220" Height="35" Margin="5"
+                                    Background="#1a3a6b" Foreground="White" FontWeight="Bold"
+                                    Click="BtnPresupuestoPDF_Click"/>
+                        </WrapPanel>
+
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>
+
         </TabControl>
     </Grid>
 </Window>
