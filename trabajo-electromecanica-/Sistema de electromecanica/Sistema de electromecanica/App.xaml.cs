@@ -9,12 +9,6 @@ namespace Sistema_de_electromecanica
     /// </summary>
     public partial class App : Application
     {
-        protected override void OnStartup(StartupEventArgs e)
-        {
-            base.OnStartup(e);
-
-            Inicio_de_sesion login = new Inicio_de_sesion();
-            login.Show();
-        }
     }
+
 }

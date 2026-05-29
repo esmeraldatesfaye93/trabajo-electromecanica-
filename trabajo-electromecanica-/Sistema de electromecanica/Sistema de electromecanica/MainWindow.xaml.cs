@@ -652,5 +652,5 @@ namespace SistemaCotizacionesWPF
             MessageBox.Show("PDF generado correctamente");
         }
 
-    } 
-} 
+    } // ← cierra MainWindow
+} // ← cierra namespace

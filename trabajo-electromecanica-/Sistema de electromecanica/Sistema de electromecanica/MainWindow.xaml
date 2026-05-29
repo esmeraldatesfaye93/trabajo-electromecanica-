@@ -7,6 +7,9 @@
     <Grid Background="#F5F5F5">
         <TabControl>
 
+            <!-- ═══════════════════════════════════════════════════ -->
+            <!-- TAB 1: COTIZACIÓN                                   -->
+            <!-- ═══════════════════════════════════════════════════ -->
             <TabItem Header="Cotización" Padding="10">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <StackPanel Margin="10">
@@ -15,7 +18,7 @@
                                    FontSize="22" FontWeight="Bold"
                                    HorizontalAlignment="Center" Margin="0,0,0,10"/>
 
-                        
+                        <!-- DATOS DEL CLIENTE -->
                         <Border Background="White" Padding="15" Margin="0,0,0,10">
                             <StackPanel>
                                 <TextBlock Text="Datos del Cliente"
@@ -47,7 +50,7 @@
                             </StackPanel>
                         </Border>
 
-                        
+                        <!-- AGREGAR ARTÍCULO -->
                         <Border Background="White" Padding="15" Margin="0,0,0,5">
                             <StackPanel>
                                 <TextBlock Text="Agregar Artículo"
@@ -90,7 +93,7 @@
                             </StackPanel>
                         </Border>
 
-                       
+                        <!-- TABLA -->
                         <DataGrid x:Name="grid" Height="250" Margin="0,0,0,5"
                                   AutoGenerateColumns="False"
                                   CanUserAddRows="False" CanUserDeleteRows="False"
@@ -115,7 +118,7 @@
                             </DataGrid.Columns>
                         </DataGrid>
 
-                       
+                        <!-- BOTONES Y TOTAL -->
                         <Border Background="White" Padding="15">
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -144,7 +147,9 @@
                 </ScrollViewer>
             </TabItem>
 
-
+            <!-- ═══════════════════════════════════════════════════ -->
+            <!-- TAB 2: APU                                          -->
+            <!-- ═══════════════════════════════════════════════════ -->
             <TabItem Header="APU - Análisis de Precios Unitarios">
                 <ScrollViewer VerticalScrollBarVisibility="Auto"
                               HorizontalScrollBarVisibility="Disabled">
@@ -154,7 +159,7 @@
                                    FontSize="20" FontWeight="Bold"
                                    Margin="0,0,0,10" HorizontalAlignment="Center"/>
 
-                       
+                        <!-- ENCABEZADO GENERAL -->
                         <Border BorderBrush="#AAAAAA" BorderThickness="1" Margin="0,0,0,10"
                                 Background="#F0F0F0">
                             <Grid>
@@ -187,17 +192,17 @@
                             </Grid>
                         </Border>
 
-                        
+                        <!-- BOTÓN AGREGAR NUEVO APU -->
                         <Button Content="+ Agregar nueva Actividad APU"
                                 Height="40" Margin="0,0,0,10"
                                 Background="#4CAF50" Foreground="White"
                                 FontSize="14" FontWeight="Bold"
                                 Click="BtnNuevoAPU_Click"/>
 
-                        
+                        <!-- CONTENEDOR DINÁMICO DE APUs -->
                         <StackPanel x:Name="panelAPUs" Margin="0,0,0,10"/>
 
-                        
+                        <!-- ═══════ PRESUPUESTO CONSOLIDADO ═══════ -->
                         <Border Background="#1a3a6b" Margin="0,10,0,0">
                             <TextBlock Text="PRESUPUESTO CONSOLIDADO"
                                        Foreground="White" FontWeight="Bold"
@@ -233,7 +238,7 @@
                             </DataGrid>
                         </Border>
 
-                        
+                        <!-- TOTALES -->
                         <Border Background="White" BorderBrush="#AAAAAA"
                                 BorderThickness="1" Padding="10" Margin="0,0,0,10">
                             <Grid HorizontalAlignment="Right" Width="320">
@@ -270,7 +275,7 @@
                             </Grid>
                         </Border>
 
-                       
+                        <!-- BOTONES FINALES -->
                         <WrapPanel Margin="0,0,0,15">
                             <Button Content="Actualizar Presupuesto"
                                     Width="200" Height="35" Margin="5"

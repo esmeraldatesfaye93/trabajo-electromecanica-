@@ -5,8 +5,5 @@
     <Compile Update="ControlAPU.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Inicio de sesion.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
   </ItemGroup>
 </Project>
